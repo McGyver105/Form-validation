@@ -1,5 +1,5 @@
 const usernameRegex = /^[A-z]+[0-9]+[!@£#$%^&*()\-_=+]+$|^[A-z]+[!@£#$%^&*()\-_=+]+[0-9]+/
-const namesRegex = /^[A-z\s"!]+$/
+const namesRegex = /^[A-z\s"!\-]+$/
 
 const usernameInput = document.querySelector("#username-input");
 const firstNameInput = document.querySelector("#firstname-input");
