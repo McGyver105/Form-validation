@@ -2,3 +2,15 @@ label {
   display: block;
   line-height: 30px;
 }
+
+.rabbitimage {
+  width: 200px;
+}
+
+.valid {
+  background-color: lightgreen;
+}
+
+.invalid {
+  background-color: pink;
+}
