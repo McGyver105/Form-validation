@@ -5,6 +5,7 @@ const usernameInput = document.querySelector("#username-input");
 const firstNameInput = document.querySelector("#firstname-input");
 const lastNameInput = document.querySelector("#lastname-input");
 const dateOfBirth = document.querySelector("#dateofbirth-input");
+const submitButton = document.querySelector("#submitButton");
 
 usernameInput.addEventListener("blur", (event) => {
     const error = document.querySelector(".errorMessage")
@@ -40,7 +41,6 @@ const checkValidity = (event, regex) => {
         event.target.classList.remove("valid")
     }
     else {
-        console.log('passed')
         event.target.classList.add("valid")
         event.target.classList.remove("invalid")
     };
@@ -49,7 +49,6 @@ const checkValidity = (event, regex) => {
 const checkDateOfBirth = (event) => {
     const inputDate = new Date(event.target.value).getTime();
     const currentDate = new Date().getTime();
-    console.log(currentDate - inputDate)
     if (currentDate - inputDate < 568024668000) {
         const errorMessage = document.createElement("p")
         errorMessage.classList.add("errorMessage")
@@ -59,8 +58,23 @@ const checkDateOfBirth = (event) => {
         event.target.classList.remove("valid")
     }
     else {
-        console.log('passed')
         event.target.classList.add("valid")
         event.target.classList.remove("invalid")
     }
 }
+
+submitButton.addEventListener("click", (event) => {
+    const error = document.querySelector(".errorMessage")
+    if (error !== null) error.remove()
+    if (usernameInput.classList.value === 'valid'
+        && firstNameInput.classList.value === 'valid'
+        && lastNameInput.classList.value === 'valid'
+        && dateOfBirth.classList.value === 'valid') {
+    } else {
+        event.preventDefault();
+        const errorMessage = document.createElement("p")
+        errorMessage.classList.add("errorMessage")
+        errorMessage.innerText = "some fields are incomplete or invalid. please try again."
+        event.target.parentNode.appendChild(errorMessage)
+    }
+})
